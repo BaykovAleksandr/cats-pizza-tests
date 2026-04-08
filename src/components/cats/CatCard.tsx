@@ -1,4 +1,4 @@
-import type { Cat } from '../../data/cats';
+import type { Cat } from "../../data/cats";
 
 interface CatCardProps {
   cat: Cat;
@@ -15,7 +15,11 @@ export function CatCard({ cat, onAddToCart, index }: CatCardProps) {
         <p className="cat-card__description">{cat.description}</p>
         <div className="cat-card__footer">
           <span className="cat-card__price">{cat.price.toFixed(2)} ₽</span>
-          <button type="button" onClick={onAddToCart}>
+          <button
+            data-testId="addToCartButton"
+            type="button"
+            onClick={onAddToCart}
+          >
             Добавить в корзину
           </button>
         </div>

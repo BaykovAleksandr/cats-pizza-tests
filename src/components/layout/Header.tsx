@@ -25,21 +25,32 @@ export function Header({ onCartClick }: HeaderProps) {
         <nav className="nav">
           <NavLink
             to="/"
-            className={({ isActive }) => (isActive ? 'nav__link nav__link--active' : 'nav__link')}>
+            className={({ isActive }) =>
+              isActive ? "nav__link nav__link--active" : "nav__link"
+            }
+          >
             Главная
           </NavLink>
           <NavLink
+          data-testId="openOrdersButton"
             to="/orders"
-            className={({ isActive }) => (isActive ? 'nav__link nav__link--active' : 'nav__link')}>
+            className={({ isActive }) =>
+              isActive ? "nav__link nav__link--active" : "nav__link"
+            }
+          >
             Мои заказы
           </NavLink>
           <button
             type="button"
+            data-TestId="openCartButton"
             className={
-              itemsCount > 0 ? 'nav__cart-button nav__cart-button--active' : 'nav__cart-button'
+              itemsCount > 0
+                ? "nav__cart-button nav__cart-button--active"
+                : "nav__cart-button"
             }
-            onClick={onCartClick}>
-            Корзина{itemsCount > 0 ? ` (${itemsCount})` : ''}
+            onClick={onCartClick}
+          >
+            Корзина{itemsCount > 0 ? ` (${itemsCount})` : ""}
           </button>
         </nav>
 
@@ -47,17 +58,21 @@ export function Header({ onCartClick }: HeaderProps) {
           {isAuthenticated ? (
             <button
               type="button"
+              data-TestId="signOutButton"
               className="auth__link"
               onClick={logout}
-              style={{ background: 'none', border: 'none', padding: 0 }}>
+              style={{ background: "none", border: "none", padding: 0 }}
+            >
               Выйти
             </button>
           ) : (
             <button
               type="button"
+              data-TestId="signInButton"
               className="auth__link"
               onClick={() => openAuthModal()}
-              style={{ background: 'none', border: 'none', padding: 0 }}>
+              style={{ background: "none", border: "none", padding: 0 }}
+            >
               Войти
             </button>
           )}
