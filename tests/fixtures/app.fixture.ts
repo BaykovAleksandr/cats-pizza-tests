@@ -3,6 +3,7 @@ import { OrdersPage } from "./../POM/pages/OrdersPage";
 import { CheckOutPage } from "./../POM/pages/CheckOutPage";
 import { AuthModalPage } from "./../POM/pages/AuthModalPage";
 import { HomePage } from "./../POM/pages/HomePage";
+import { CartPage } from "../POM/pages/CardPage";
 import { test as base } from "@playwright/test";
 
 type MyFixtures = {
@@ -10,6 +11,7 @@ type MyFixtures = {
   authModalPage: AuthModalPage;
   checkoutPage: CheckOutPage;
   orderPage: OrdersPage;
+  cartPage: CartPage;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -28,6 +30,10 @@ export const test = base.extend<MyFixtures>({
   orderPage: async ({ page }, use) => {
     const orderPage = new OrdersPage(page);
     await use(orderPage);
+  },
+  cartPage: async ({ page }, use) => {
+    const cartPage = new CartPage(page);
+    await use(cartPage);
   },
 });
 

@@ -35,4 +35,18 @@ export class CheckOutPage {
     );
     await this.page.getByTestId("closeModalButton").click();
   }
+
+  async submitWithoutAddress() {
+    await this.page.getByTestId("approveOrder").click();
+  }
+
+  async assertCheckoutOpened() {
+    await expect(this.page.getByTestId("modalTitle")).toHaveText(
+      "Оформление доставки",
+    );
+  }
+
+  async assertValidationError(message: string) {
+    await expect(this.page.getByText(message)).toBeVisible();
+  }
 }

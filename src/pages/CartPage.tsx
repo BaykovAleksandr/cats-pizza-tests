@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useCart } from '../cart/CartContext';
-import { useAuth } from '../auth/AuthContext';
-import { useAuthModal } from '../components/auth/AuthModalProvider';
-import { CheckoutModal } from '../components/auth/CheckoutModal';
-import './CartPage.css';
+import { useState } from "react";
+import { useCart } from "../cart/CartContext";
+import { useAuth } from "../auth/AuthContext";
+import { useAuthModal } from "../components/auth/AuthModalProvider";
+import { CheckoutModal } from "../components/auth/CheckoutModal";
+import "./CartPage.css";
 
 export function CartPage() {
   const { state, changeQuantity, removeItem, clearCart } = useCart();
@@ -11,7 +11,10 @@ export function CartPage() {
   const { openAuthModal } = useAuthModal();
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
-  const total = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = state.items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   const handleOrderClick = () => {
     if (state.items.length === 0) return;
@@ -44,21 +47,32 @@ export function CartPage() {
                       <button
                         type="button"
                         onClick={() =>
-                          changeQuantity(item.id, item.quantity > 1 ? item.quantity - 1 : 1)
-                        }>
+                          changeQuantity(
+                            item.id,
+                            item.quantity > 1 ? item.quantity - 1 : 1,
+                          )
+                        }
+                      >
                         −
                       </button>
                       <input
+                        data-testid="itemCounter"
                         type="number"
                         min={1}
                         value={item.quantity}
                         onChange={(e) =>
-                          changeQuantity(item.id, Math.max(1, Number(e.target.value) || 1))
+                          changeQuantity(
+                            item.id,
+                            Math.max(1, Number(e.target.value) || 1),
+                          )
                         }
                       />
                       <button
                         type="button"
-                        onClick={() => changeQuantity(item.id, item.quantity + 1)}>
+                        onClick={() =>
+                          changeQuantity(item.id, item.quantity + 1)
+                        }
+                      >
                         +
                       </button>
                     </div>
@@ -66,7 +80,8 @@ export function CartPage() {
                   <button
                     type="button"
                     className="cart-item__remove"
-                    onClick={() => removeItem(item.id)}>
+                    onClick={() => removeItem(item.id)}
+                  >
                     Удалить
                   </button>
                 </div>
@@ -75,7 +90,7 @@ export function CartPage() {
                     <div>Шерсть: {item.options.furType}</div>
                     <div>Активность: {item.options.activityLevel}</div>
                     {item.options.extras.length > 0 && (
-                      <div>Дополнительно: {item.options.extras.join(', ')}</div>
+                      <div>Дополнительно: {item.options.extras.join(", ")}</div>
                     )}
                   </div>
                 )}
@@ -89,15 +104,20 @@ export function CartPage() {
             </div>
 
             <div className="cart-summary__actions">
-              <button type="button" className="cart-summary__clear" onClick={clearCart}>
+              <button
+                type="button"
+                className="cart-summary__clear"
+                onClick={clearCart}
+              >
                 Очистить корзину
               </button>
               <button
-              data-testId="makeOrderButton"
+                data-testId="makeOrderButton"
                 type="button"
                 className="cart-summary__order"
                 onClick={handleOrderClick}
-                disabled={state.items.length === 0}>
+                disabled={state.items.length === 0}
+              >
                 Оформить заказ
               </button>
             </div>
@@ -105,7 +125,10 @@ export function CartPage() {
         </>
       )}
 
-      <CheckoutModal isOpen={isCheckoutModalOpen} onClose={() => setIsCheckoutModalOpen(false)} />
+      <CheckoutModal
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+      />
     </section>
   );
 }
