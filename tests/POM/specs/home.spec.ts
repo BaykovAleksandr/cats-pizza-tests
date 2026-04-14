@@ -1,4 +1,4 @@
-import { test } from "../../fixtures/app.fixture";
+import { guestTest as test } from "../../fixtures/app.fixture";
 
 test.describe("Catalog and Cart (Guest)", () => {
   test.beforeEach(async ({ homePage }) => {

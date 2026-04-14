@@ -25,7 +25,6 @@ export class CheckOutPage {
     await this.page.getByLabel("Дом").fill(address.house);
     await this.page.getByLabel("Квартира").fill(address.apartment);
     await this.page.getByLabel("Комментарий курьеру").fill(address.comment);
-    //await this.page.getByTestId("approveOrderButton").click();
   }
 
   async submit() {

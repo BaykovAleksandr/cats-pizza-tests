@@ -1,6 +1,6 @@
 import { CleanUpApi } from "./../api/CleanUpApi";
 import { testUsers } from "./../data/testData";
-import { test } from "../../fixtures/app.fixture";
+import { guestTest as test } from "../../fixtures/app.fixture";
 
 test.describe("Auth", () => {
   let createdUserEmail: string | null = null;

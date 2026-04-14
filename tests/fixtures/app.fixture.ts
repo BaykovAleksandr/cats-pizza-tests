@@ -5,6 +5,12 @@ import { AuthModalPage } from "./../POM/pages/AuthModalPage";
 import { HomePage } from "./../POM/pages/HomePage";
 import { CartPage } from "../POM/pages/CardPage";
 import { test as base } from "@playwright/test";
+import path from "path";
+
+export const authFile = path.join(
+  process.cwd(),
+  "playwright/.auth/existing-user.json",
+);
 
 type MyFixtures = {
   homePage: HomePage;
@@ -14,7 +20,11 @@ type MyFixtures = {
   cartPage: CartPage;
 };
 
-export const test = base.extend<MyFixtures>({
+type AppOptions = {
+  storageState: string | undefined;
+};
+
+const appTest = base.extend<MyFixtures>({
   homePage: async ({ page }, use) => {
     const homePage = new HomePage(page);
     await use(homePage);
@@ -37,4 +47,8 @@ export const test = base.extend<MyFixtures>({
   },
 });
 
+export const guestTest = appTest;
+export const authorizedTest = appTest.extend<AppOptions>({
+  storageState: authFile,
+});
 export { expect } from "@playwright/test";
