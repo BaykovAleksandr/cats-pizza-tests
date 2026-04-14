@@ -32,7 +32,7 @@ export function Header({ onCartClick }: HeaderProps) {
             Главная
           </NavLink>
           <NavLink
-          data-testId="openOrdersButton"
+          data-testid="openOrdersButton"
             to="/orders"
             className={({ isActive }) =>
               isActive ? "nav__link nav__link--active" : "nav__link"
@@ -42,7 +42,7 @@ export function Header({ onCartClick }: HeaderProps) {
           </NavLink>
           <button
             type="button"
-            data-TestId="openCartButton"
+            data-testid="openCartButton"
             className={
               itemsCount > 0
                 ? "nav__cart-button nav__cart-button--active"
@@ -58,7 +58,7 @@ export function Header({ onCartClick }: HeaderProps) {
           {isAuthenticated ? (
             <button
               type="button"
-              data-TestId="signOutButton"
+              data-testid="signOutButton"
               className="auth__link"
               onClick={logout}
               style={{ background: "none", border: "none", padding: 0 }}
@@ -68,7 +68,7 @@ export function Header({ onCartClick }: HeaderProps) {
           ) : (
             <button
               type="button"
-              data-TestId="signInButton"
+              data-testid="signInButton"
               className="auth__link"
               onClick={() => openAuthModal()}
               style={{ background: "none", border: "none", padding: 0 }}

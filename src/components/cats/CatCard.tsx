@@ -16,7 +16,7 @@ export function CatCard({ cat, onAddToCart, index }: CatCardProps) {
         <div className="cat-card__footer">
           <span className="cat-card__price">{cat.price.toFixed(2)} ₽</span>
           <button
-            data-testId="addToCartButton"
+            data-testid="addToCartButton"
             type="button"
             onClick={onAddToCart}
           >

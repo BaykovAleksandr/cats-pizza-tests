@@ -112,7 +112,7 @@ export function CartPage() {
                 Очистить корзину
               </button>
               <button
-                data-testId="makeOrderButton"
+                data-testid="makeOrderButton"
                 type="button"
                 className="cart-summary__order"
                 onClick={handleOrderClick}

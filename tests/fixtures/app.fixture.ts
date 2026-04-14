@@ -3,7 +3,7 @@ import { OrdersPage } from "./../POM/pages/OrdersPage";
 import { CheckOutPage } from "./../POM/pages/CheckOutPage";
 import { AuthModalPage } from "./../POM/pages/AuthModalPage";
 import { HomePage } from "./../POM/pages/HomePage";
-import { CartPage } from "../POM/pages/CardPage";
+import { CartPage } from "../POM/pages/CartPage";
 import { test as base } from "@playwright/test";
 import path from "path";
 

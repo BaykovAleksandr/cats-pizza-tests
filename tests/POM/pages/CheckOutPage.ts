@@ -36,7 +36,7 @@ export class CheckOutPage {
   }
 
   async submitWithoutAddress() {
-    await this.page.getByTestId("approveOrder").click();
+    await this.page.getByTestId("approveOrderButton").click();
   }
 
   async assertCheckoutOpened() {

@@ -11,9 +11,11 @@ export class HomePage {
 
   async addFirstCatToCart() {
     await this.page
-      .getByTestId("catCard_0")
-      .getByTestId("addToCartButton")
+      .getByTestId("addToCartButton").nth(0)
       .click();
+    await this.page
+      .getByTestId("catModalAddToCartButton")
+      .waitFor({ state: "visible" });
     await this.page.getByTestId("catModalAddToCartButton").click();
   }
 

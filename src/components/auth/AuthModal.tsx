@@ -146,7 +146,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
         </button>
         <button
           type="button"
-          data-testId="registerButton"
+          data-testid="registerButton"
           onClick={() => switchMode("register")}
           disabled={mode === "register"}
           className={`page-tabs__button ${mode === "register" ? "page-tabs__button--active" : ""}`}
@@ -205,7 +205,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
 
         <button
           type="submit"
-          data-testId="signInOrSignOutButton"
+          data-testid="signInOrSignOutButton"
           className="page-card__submit"
           disabled={isSubmitting}
         >
