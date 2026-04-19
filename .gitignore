@@ -33,3 +33,4 @@ server
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/tests/__screenshots__/

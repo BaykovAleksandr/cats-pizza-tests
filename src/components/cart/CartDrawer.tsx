@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { useCart } from '../../cart/CartContext';
-import './CartDrawer.css';
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../cart/CartContext";
+import "./CartDrawer.css";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -11,12 +11,15 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const { state, changeQuantity, removeItem } = useCart();
   const navigate = useNavigate();
 
-  const total = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = state.items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   if (!isOpen) return null;
 
   const handleGoToCart = () => {
-    navigate('/cart');
+    navigate("/cart");
     onClose();
   };
 
@@ -24,12 +27,18 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     <div className="cart-drawer-overlay" onClick={onClose}>
       <aside
         className="cart-drawer"
+        data-testid="cartDrawer"
         onClick={(event) => {
           event.stopPropagation();
-        }}>
+        }}
+      >
         <header className="cart-drawer__header">
           <h2>Корзина</h2>
-          <button type="button" className="cart-drawer__close" onClick={onClose}>
+          <button
+            type="button"
+            className="cart-drawer__close"
+            onClick={onClose}
+          >
             ×
           </button>
         </header>
@@ -48,8 +57,12 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                         <button
                           type="button"
                           onClick={() =>
-                            changeQuantity(item.id, item.quantity > 1 ? item.quantity - 1 : 1)
-                          }>
+                            changeQuantity(
+                              item.id,
+                              item.quantity > 1 ? item.quantity - 1 : 1,
+                            )
+                          }
+                        >
                           −
                         </button>
                         <input
@@ -57,19 +70,26 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                           min={1}
                           value={item.quantity}
                           onChange={(e) =>
-                            changeQuantity(item.id, Math.max(1, Number(e.target.value) || 1))
+                            changeQuantity(
+                              item.id,
+                              Math.max(1, Number(e.target.value) || 1),
+                            )
                           }
                         />
                         <button
                           type="button"
-                          onClick={() => changeQuantity(item.id, item.quantity + 1)}>
+                          onClick={() =>
+                            changeQuantity(item.id, item.quantity + 1)
+                          }
+                        >
                           +
                         </button>
                       </div>
                       <button
                         type="button"
                         className="cart-drawer__item-remove"
-                        onClick={() => removeItem(item.id)}>
+                        onClick={() => removeItem(item.id)}
+                      >
                         Удалить
                       </button>
                     </div>
@@ -85,7 +105,12 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               <div className="cart-drawer__total">
                 Итого: <strong>{total.toFixed(2)} ₽</strong>
               </div>
-              <button data-testid="goToCartPageButton" type="button" className="cart-drawer__cta" onClick={handleGoToCart}>
+              <button
+                data-testid="goToCartPageButton"
+                type="button"
+                className="cart-drawer__cta"
+                onClick={handleGoToCart}
+              >
                 Перейти к оформлению
               </button>
             </div>
